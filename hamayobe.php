@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zambian Cute Hotel</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+* {margin:0; padding:0; box-sizing:border-box; font-family:Arial, sans-serif;}
+body {background:#f8f8f8; color:#333; line-height:1.6;}
+
+header {
+    background:url('images/header.jpg') no-repeat center/cover;
+    height:90vh; display:flex; flex-direction:column; justify-content:center; align-items:center;
+    color:white; text-align:center; padding:0 20px;
+}
+header h1 {font-size:3rem; background:rgba(0,0,0,0.6); padding:15px 25px; border-radius:8px;}
+header button {margin-top:20px; padding:12px 25px; border:none; background:#ff9800; color:white; font-size:1.2rem; cursor:pointer; border-radius:5px;}
+header button:hover {background:#e68a00;}
+
+nav {background:#222; padding:12px; text-align:center;}
+nav a {color:white; text-decoration:none; margin:0 15px; font-weight:bold;}
+nav a:hover {color:#ff9800;}
+
+section {padding:50px 20px; max-width:1200px; margin:auto;}
+h2 {text-align:center; margin-bottom:30px; color:#ff9800;}
+
+.services,.rooms {display:flex; flex-wrap:wrap; gap:20px; justify-content:center;}
+.service,.room {background:white; padding:20px; border-radius:8px; text-align:center; box-shadow:0 0 8px rgba(0,0,0,0.1);}
+.room img {width:100%; height:200px; object-fit:cover; border-radius:8px 8px 0 0;}
+
+.gallery img {width:32%; margin:1%; border-radius:5px; transition:transform 0.3s;}
+.gallery img:hover {transform:scale(1.05);}
+
+form {background:white; padding:20px; border-radius:8px; box-shadow:0 0 5px rgba(0,0,0,0.1);}
+form input, form textarea, form button {width:100%; padding:10px; margin:8px 0; border:1px solid #ccc; border-radius:5px;}
+form button {background:#ff9800; color:white; border:none; cursor:pointer; font-size:1rem;}
+form button:hover {background:#e68a00;}
+
+footer {background:#222; color:white; text-align:center; padding:20px;}
+footer a {color:#ff9800; text-decoration:none; margin:0 10px;}
+
+.popup-bg {
+    display:none;
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:rgba(0,0,0,0.7);
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+}
+.popup-box {
+    background:white;
+    padding:30px;
+    border-radius:8px;
+    width:90%;
+    max-width:400px;
+    box-shadow:0 0 10px rgba(0,0,0,0.3);
+    text-align:center;
+    position:relative;
+}
+.popup-box h2 {margin-bottom:15px;}
+.popup-box p {margin:10px 0;}
+.popup-box a {color:#ff9800; cursor:pointer;}
+.close-btn {
+    position:absolute;
+    top:15px; right:20px;
+    font-size:20px; color:white;
+    cursor:pointer;
+}
+
+#bookingSection {display:none;}
+
+.fixed-contact {
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    z-index:9999;
+}
+.fixed-contact a {color:#25d366; font-size:2rem; text-decoration:none;}
+.fixed-contact a.facebook {color:#3b5998;}
+
+@media(max-width:768px){
+    .services,.rooms{flex-direction:column;}
+    .gallery img{width:48%;}
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Zambian Cute Hotel</h1>
+    <button onclick="showLogin()">Book Now</button>
+</header>
+
+<nav>
+    <a href="#services">Services</a>
+    <a href="#rooms">Rooms</a>
+    <a href="#about">About</a>
+    <a href="#events">Events</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#bookingSection">Booking</a>
+</nav>
+
+<section id="services">
+    <h2>Our Services</h2>
+    <div class="services">
+        <div class="service"><i class="fas fa-bed"></i><h3>Luxury Rooms</h3><p>Spacious and elegant rooms with modern amenities.</p></div>
+        <div class="service"><i class="fas fa-utensils"></i><h3>Restaurant</h3><p>Fine dining with local and international cuisines.</p></div>
+        <div class="service"><i class="fas fa-spa"></i><h3>Spa & Wellness</h3><p>Relax and rejuvenate in our luxury spa.</p></div>
+        <div class="service"><i class="fas fa-dumbbell"></i><h3>Fitness Center</h3><p>Stay fit with our state-of-the-art gym.</p></div>
+        <div class="service"><i class="fas fa-swimming-pool"></i><h3>Swimming Pool</h3><p>Enjoy our outdoor pool with a scenic view.</p></div>
+        <div class="service"><i class="fas fa-chalkboard-teacher"></i><h3>Conference Rooms</h3><p>Spacious, fully equipped meeting rooms.</p></div>
+    </div>
+</section>
+
+<section id="rooms">
+    <h2>Our Rooms</h2>
+    <div class="rooms">
+        <div class="room"><img src="images/room1.jpg" alt="Standard Room"><h3>Standard Room</h3><p>From ZMW 800/night</p></div>
+        <div class="room"><img src="images/room2.jpg" alt="Deluxe Room"><h3>Deluxe Room</h3><p>From ZMW 1,200/night</p></div>
+        <div class="room"><img src="images/room3.jpg" alt="Executive Suite"><h3>Executive Suite</h3><p>From ZMW 2,000/night</p></div>
+        <div class="room"><img src="images/room4.jpg" alt="Presidential Suite"><h3>Presidential Suite</h3><p>From ZMW 3,000/night</p></div>
+        <div class="room"><img src="images/room5.jpg" alt="Family Room"><h3>Family Room</h3><p>From ZMW 1,800/night</p></div>
+        <div class="room"><img src="images/room6.jpg" alt="Honeymoon Suite"><h3>Honeymoon Suite</h3><p>From ZMW 2,200/night</p></div>
+        <div class="room"><img src="images/room7.jpg" alt="Business Room"><h3>Business Room</h3><p>From ZMW 1,500/night</p></div>
+        <div class="room"><img src="images/room8.jpeg" alt="Twin Room"><h3>Twin Room</h3><p>From ZMW 1,000/night</p></div>
+    </div>
+</section>
+
+<section id="about">
+    <h2>About Us</h2>
+    <p>Located in the heart of Lusaka, Zambian Cute Hotel offers world-class hospitality with a touch of African charm.</p>
+</section>
+
+<section id="events">
+    <h2>Conferences & Events</h2>
+    <p>Perfect for meetings, weddings, and special occasions with full audio-visual support.</p>
+</section>
+
+<section id="gallery">
+    <h2>Photo Gallery</h2>
+    <div class="gallery">
+        <img src="images/gallery1.jpeg" alt="Hotel Lobby">
+        <img src="images/gallery2.jpeg" alt="Swimming Pool">
+        <img src="images/gallery3.jpg" alt="Restaurant">
+        <img src="images/gallery4.jpeg" alt="Conference Hall">
+        <img src="images/gallery5.jpeg" alt="Spa">
+        <img src="images/gallery6.jpeg" alt="Gym">
+        <img src="images/gallery7.jpeg" alt="Room Interior">
+        <img src="images/gallery8.jpeg" alt="Bar & Lounge">
+        <img src="images/gallery9.jpeg" alt="Garden View">
+    </div>
+</section>
+
+<section id="bookingSection">
+    <h2>Booking & Check-in</h2>
+    <form id="bookingForm">
+        <input type="text" id="guestName" placeholder="Full Name" required>
+        <input type="email" id="guestEmail" placeholder="Email Address" required>
+        <input type="tel" id="guestPhone" placeholder="Phone Number" required>
+        <label>Check-in Date</label>
+        <input type="date" id="checkin" required>
+        <label>Check-out Date</label>
+        <input type="date" id="checkout" required>
+        <textarea id="specialRequest" placeholder="Message or Special Request" rows="4"></textarea>
+        <button type="submit">Send Booking Request</button>
+    </form>
+</section>
+
+<footer>
+    <p>&copy; 2025 Zambian Cute Hotel | Designed with ❤️ in Zambia</p>
+</footer>
+
+<div class="fixed-contact">
+    <a href="https://facebook.com" target="_blank" class="facebook"><i class="fab fa-facebook"></i></a>
+    <a href="https://wa.me/260979950771" target="_blank"><i class="fab fa-whatsapp"></i></a>
+</div>
+
+<div class="popup-bg" id="popupLogin">
+    <div class="close-btn" onclick="closePopup()">&times;</div>
+    <div class="popup-box" id="authBox"></div>
+</div>
+
+<script>
+function openPopup(){ document.getElementById("popupLogin").style.display="flex"; }
+function closePopup(){ document.getElementById("popupLogin").style.display="none"; }
+
+function showLogin(){
+    document.getElementById("authBox").innerHTML = `
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="email" placeholder="Email" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+        <p><a onclick="showForgot()">Forgot Password?</a></p>
+        <p>Don't have an account? <a onclick="showSignup()">Sign Up</a></p>
+    `;
+    openPopup();
+    document.getElementById("loginForm").addEventListener("submit", function(e){
+        e.preventDefault();
+        alert("Login successful!");
+        closePopup();
+        document.getElementById("bookingSection").style.display = "block";
+        document.getElementById("bookingSection").scrollIntoView({behavior:"smooth"});
+    });
+}
+
+function showSignup(){
+    document.getElementById("authBox").innerHTML = `
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <input type="tel" placeholder="Phone Number" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a onclick="showLogin()">Login</a></p>
+    `;
+    openPopup();
+    document.getElementById("signupForm").addEventListener("submit", function(e){
+        e.preventDefault();
+        let password = document.getElementById("password").value;
+        let confirmPassword = document.getElementById("confirmPassword").value;
+        if(password !== confirmPassword){
+            alert("Passwords do not match!");
+            return;
+        }
+        alert("Sign-up successful!");
+        closePopup();
+        document.getElementById("bookingSection").style.display = "block";
+        document.getElementById("bookingSection").scrollIntoView({behavior: "smooth"});
+    });
+}
+
+function showForgot(){
+    document.getElementById("authBox").innerHTML = `
+        <h2>Forgot Password</h2>
+        <form id="forgotForm">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Reset Password</button>
+        </form>
+        <p>Remembered? <a onclick="showLogin()">Login</a></p>
+    `;
+    openPopup();
+    document.getElementById("forgotForm").addEventListener("submit", function(e){
+        e.preventDefault();
+        alert("Password reset link sent to your email!");
+        showLogin();
+    });
+}
+
+document.getElementById("bookingForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    let name = document.getElementById("guestName").value;
+    let email = document.getElementById("guestEmail").value;
+    let phone = document.getElementById("guestPhone").value;
+    let checkin = document.getElementById("checkin").value;
+    let checkout = document.getElementById("checkout").value;
+    let request = document.getElementById("specialRequest").value;
+    let message = `Hello, I want to book a stay.%0AName: ${name}%0AEmail: ${email}%0APhone: ${phone}%0ACheck-in: ${checkin}%0ACheck-out: ${checkout}%0ARequest: ${request}`;
+    let whatsappURL = `https://wa.me/260979950771?text=${message}`;
+    window.open(whatsappURL, "_blank");
+});
+</script>
+
+</body>
+</html>
